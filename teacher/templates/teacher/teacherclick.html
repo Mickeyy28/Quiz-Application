@@ -1,0 +1,18 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{%load static%}
+
+<br><br>
+<div class="jumbotron" style="background-color: white;position: absolute;margin-left: 31rem;">
+    <h1 class="display-3">Hello, Teacher</h1>
+    <h4>Welcome to Online Quiz</h4>
+    <hr class="my-4">
+    <p>You can access various features after Login.</p>
+    <p class="lead">
+        <a class="btn btn-lg btn-info" href="teachersignup" role="button">Create Account</a>
+        <a class="btn btn-lg btn-info" href="teacherlogin" role="button">Login</a>
+    </p>
+    <br><br><br><br>
+</div>
+
+{%endblock %}

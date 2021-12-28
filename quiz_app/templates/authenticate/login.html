@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container text-center mt-4 pt-4">
+  <form class="form-signin" style="margin-left: 150px;margin-right: 150px;" method="post">
+    {% csrf_token %}
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endif %}
+    <h1 class="h3 mb-3 mt-5 font-weight-normal">Student Login</h1>
+
+    <label for="username" class="sr-only">Email address</label>
+    <input type="username" name="username" id="username" style="border-radius: 1.25rem;" class="form-control mt-4"
+      placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" style="border-radius: 1.25rem;" class="form-control mt-4"
+      placeholder="Password" required>
+    <br>
+
+    <p>Don't have account? <a href="{% url 'authenticate:user_register' %}">Register</a></p>
+
+    <button class="btn  mt-4 btn-success btn-lg" type="submit">Sign in</button>
+
+  </form>
+</div>
+
+
+{% endblock %}

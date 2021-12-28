@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+
+<style>
+    .jumbotron {
+        margin-bottom: 0px;
+    }
+</style>
+
+<body>
+
+    <br>
+    <section style="background-color: white;" id="section-jumbotron"
+        class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
+        <div class="container text-center">
+            <h1 class="display-3">Hello, Student</h1>
+            <h1 class="text">Let's Quiz</h1>
+            <h1 class="text-center">Test your skills</h1>
+            <p>All The Best!</p>
+            <a href="{% url 'authenticate:user_login' %}" class="btn btn-lg btn-info" style="padding-right: 15px;"><i
+                    class="fa fa-user-plus" aria-hidden="true"></i>Start</a>
+
+            <br><br><br>
+        </div>
+    </section>
+
+
+
+</body>
+
+{%endblock %}

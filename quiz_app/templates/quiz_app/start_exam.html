@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<div style="background-color: white;" class="jumbotron my-4">
+
+    <form class="form" autocomplete="off" method="GET">
+        {% csrf_token %}
+        <h1 style="text-align: center;">{{course.course_name}}</h1>
+        {% for q in questions%}
+        <h3 class="question mt-5">{{q.question}}</h3>
+        <h6 style="text-align: right;">[Marks {{q.marks}}]</h6>
+        <form method="GET">
+            {% csrf_token %}
+            <div class="radio">
+                <input type="radio" name="name" id="option1" value="{{q.option1}}">
+                <label for="option1">{{q.option1}} </label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="name" id="option2" value="{{q.option2}}">
+                <label for="option2">{{q.option2}}</label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="name" id="option3" value="{{q.option3}}">
+                <label for="option3">{{q.option3}}</label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="name" id="option4" value="{{q.option4}}">
+                <label for="option4">{{q.option4}} </label>
+            </div>
+
+        </form>
+        {% endfor %}
+
+        <div class="form-group mt-4">
+            <button class="btn  btn-danger" id="save_ans">Submit</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 offset-md-4">
+                <ul class="pagination">
+                    {% if questions.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link active" href="?page={{questions.previous_page_number}}">Previous</a>
+                    </li>
+                    {%endif %}
+
+                    {% if questions.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{questions.next_page_number}}">Next</a>
+                    </li>
+                    {%else %}
+                    <a href="/calculate-marks"><button class="btn btn-success" id="submitAnswer">Submit
+                            Quiz</button></a>
+                    {%endif %}
+                </ul>
+            </div>
+        </div>
+
+
+</div>
+<script>
+
+    window.onload = initall;
+    var saveBookButton;
+    function initall() {
+        saveBookButton = document.getElementById('save_ans');
+        saveBookButton.onclick = save_ans;
+    }
+    function save_ans() {
+        var ans = $("input[type='radio'][name='name']:checked").val();
+        var url = '/save_ans?ans=' + ans;
+        var req = new XMLHttpRequest();
+
+        req.open("GET", url, true);
+        req.send();
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+{%endblock%}

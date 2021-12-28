@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+
+<div class="container my-4">
+    <div class="jumbotron" style="background-color: white;">
+        <h4 class=" text-center">Result</h4>
+        <div class="card mx-3 my-3">
+            <div class="card-body">
+                <ul style="list-style:decimal;">
+                    <li><strong>Exam</strong> : {{course}}</li>
+                    <li><strong>Score</strong> : {{total_score}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

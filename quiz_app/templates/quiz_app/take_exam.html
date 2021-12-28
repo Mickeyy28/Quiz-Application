@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+
+<div class="container my-4">
+    <div class="jumbotron" style="background-color: white;">
+
+        <h3 class=" text-center">Start the Exam</h3>
+
+
+
+        <div class="card mx-4 my-4">
+            <div class="card-body">
+
+                <h4 class="card-title">Exam Details :</h4>
+                <p class="card-text">
+                </p>
+                <ul style="list-style:decimal;">
+                    <li>Exam Name : {{course.course_name}}</li>
+                    <li>Total Question : {{total_questions}}</li>
+                    <li>Total Marks : {{total_marks}}</li>
+
+                </ul>
+                <p></p>
+
+                <a href="{% url 'start-exam' course.id  %}" class="btn btn-info">Let's Start</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{%endblock%}

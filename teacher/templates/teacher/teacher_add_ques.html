@@ -1,0 +1,39 @@
+{% extends 'teacher/teacherbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<h4>ADD QUESTION</h4>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <label for="question">Course</label>
+        {% render_field questionform.courseID|attr:'required:true' class="form-control" %}
+        <br>
+
+        <label for="question">Question</label>
+        {% render_field questionform.question|attr:'required:true' class="form-control" placeholder="question" %}
+        <br>
+        <label for="question_number">Marks</label>
+        {% render_field questionform.marks|attr:'required:true' class="form-control" placeholder="marks" %}
+        <br>
+        <label for="option1">Option 1</label>
+        {% render_field questionform.option1|attr:'required:true' class="form-control" placeholder="Rupees" %}
+        <br>
+        <label for="option2">Option 2</label>
+        {% render_field questionform.option2|attr:'required:true' class="form-control" placeholder="Dollar" %}
+        <br>
+        <label for="option3">Option 3</label>
+        {% render_field questionform.option3|attr:'required:true' class="form-control" placeholder="Taka" %}
+        <br>
+        <label for="option4">Option 4</label>
+        {% render_field questionform.option4|attr:'required:true' class="form-control" placeholder="Euro" %}
+        <br>
+        <label for="answer">Answer</label>
+        {% render_field questionform.answer|attr:'required:true' class="form-control" %}
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">ADD</button>
+</form>
+<br><br><br>
+{% endblock %}
